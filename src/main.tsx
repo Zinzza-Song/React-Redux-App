@@ -1,13 +1,19 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createStore } from "redux";
-import counter from "./reducers/index.tsx";
+import rootReducer from "./reducers/index.tsx";
 import App from "./App.tsx";
 import "./index.css";
 
-const store = createStore(counter);
+const store = createStore(rootReducer);
 
-const render = () => {
+store.dispatch({
+  type: "ADD_TODO",
+  text: "USE REDUX",
+});
+console.log("store.getSTate", store.getState());
+
+const render = () =>
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
       <App
@@ -17,7 +23,6 @@ const render = () => {
       />
     </StrictMode>
   );
-};
 
 render();
 
