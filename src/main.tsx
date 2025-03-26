@@ -8,18 +8,11 @@ import { Provider } from "react-redux";
 
 const store = createStore(rootReducer);
 
-store.dispatch({
-  type: "ADD_TODO",
-  text: "USE REDUX",
-});
-console.log("store.getSTate", store.getState());
-
 const render = () =>
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
       <Provider store={store}>
         <App
-          value={store.getState()}
           onIncrement={() => store.dispatch({ type: "INCREAMENT" })}
           onDecrement={() => store.dispatch({ type: "DECREMENT" })}
         />
