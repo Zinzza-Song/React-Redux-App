@@ -4,6 +4,7 @@ import { createStore } from "redux";
 import rootReducer from "./reducers/index.tsx";
 import App from "./App.tsx";
 import "./index.css";
+import { Provider } from "react-redux";
 
 const store = createStore(rootReducer);
 
@@ -16,11 +17,13 @@ console.log("store.getSTate", store.getState());
 const render = () =>
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <App
-        value={store.getState()}
-        onIncrement={() => store.dispatch({ type: "INCREAMENT" })}
-        onDecrement={() => store.dispatch({ type: "DECREMENT" })}
-      />
+      <Provider store={store}>
+        <App
+          value={store.getState()}
+          onIncrement={() => store.dispatch({ type: "INCREAMENT" })}
+          onDecrement={() => store.dispatch({ type: "DECREMENT" })}
+        />
+      </Provider>
     </StrictMode>
   );
 
