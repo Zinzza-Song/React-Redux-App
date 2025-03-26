@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 
 // export const fetchPosts = (): any => {
@@ -9,7 +8,7 @@ import axios from "axios";
 //   };
 // };
 
-export const fetchPosts = (): any => async (dispatch: any, getState: any) => {
+export const fetchPosts = (): any => async (dispatch: any) => {
   const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
   dispatch({ type: "FETCH_POSTS", payload: res.data });
 };
